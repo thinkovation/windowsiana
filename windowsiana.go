@@ -1,3 +1,5 @@
+// Written by Gary Barnett in 2018 as public domain software. See LICENSE
+
 // Package windowsiana provides support in converting date timezones from
 // the non-standard windows timezone format into UTC. It also provides a function
 // to return a timezone-aware date given a date string and an IANA timezone
