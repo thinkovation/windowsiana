@@ -196,6 +196,8 @@ func TimezoneParseIANA(tstring string, tzone string) (time.Time, error) {
 	return zulutime, nil
 
 }
+
+// StripTimezoneFromDate removes the same point in time and date, but strips apart the timezone
 func StripTimezoneFromDate(indate time.Time) time.Time {
 	return time.Unix(indate.Unix(), 0)
 
