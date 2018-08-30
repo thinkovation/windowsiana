@@ -165,7 +165,7 @@ var WinIANA = map[string]string{
 	"(UTC+13:00) Samoa":                                             "Pacific/Apia",
 	"(UTC+14:00) Kiritimati Island":                                 "Pacific/Kiritimati"}
 
-// TimezonParseWindows accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
+// TimezoneParseWindows accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
 // parameter and a windows time zone (eg "(UTC+12:00) Fiji") as the timezone. It will return
 // a timezoned date, which will correctly handle daylight savings time if it's in force at the given date
 func TimezoneParseWindows(tstring string, tzone string) (time.Time, error) {
@@ -178,7 +178,7 @@ func TimezoneParseWindows(tstring string, tzone string) (time.Time, error) {
 
 }
 
-// TimezonParseIana accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
+// TimezoneParseIANA accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
 // parameter and am IANA time zone (eg  "Pacific/Fiji") as the timezone. It will return
 // a timezoned date, which will correctly handle daylight savings time if it's in force at the given date
 func TimezoneParseIANA(tstring string, tzone string) (time.Time, error) {
