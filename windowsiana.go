@@ -16,13 +16,17 @@ import (
 // I've made this an accessible variable so that you can update it at runtime if needs be
 var WinIANA = map[string]string{
 	"(UTC-12:00) International Date Line West":                      "Etc/GMT+12",
+	"(UTC-11:00) Co-ordinated Universal Time-11":                    "Etc/GMT+11",
 	"(UTC-11:00) Coordinated Universal Time-11":                     "Etc/GMT+11",
+	"(UTC-10:00) Aleutian Islands":                                  "US/Aleutian",
 	"(UTC-10:00) Hawaii":                                            "Pacific/Honolulu",
 	"(UTC-09:30) Marquesas Islands":                                 "Pacific/Marquesas",
 	"(UTC-09:00) Alaska":                                            "America/Anchorage",
 	"(UTC-09:00) Co-ordinated Universal Time-09":                    "Etc/GMT+9",
+	"(UTC-09:00) Coordinated Universal Time-09":                     "Etc/GMT+9",
 	"(UTC-08:00) Baja California":                                   "America/Tijuana",
 	"(UTC-08:00) Co-ordinated Universal Time-08":                    "Etc/GMT+8",
+	"(UTC-08:00) Coordinated Universal Time-08":                     "Etc/GMT+8",
 	"(UTC-08:00) Pacific Time (US & Canada)":                        "America/Los_Angeles",
 	"(UTC-07:00) Arizona":                                           "America/Phoenix",
 	"(UTC-07:00) Chihuahua, La Paz, Mazatlan":                       "America/Chihuahua",
@@ -38,6 +42,7 @@ var WinIANA = map[string]string{
 	"(UTC-05:00) Haiti":                                             "America/Port-au-Prince",
 	"(UTC-05:00) Havana":                                            "America/Havana",
 	"(UTC-05:00) Indiana (East)":                                    "America/Indianapolis",
+	"(UTC-05:00) Turks and Caicos":                                  "Etc/GMT+5",
 	"(UTC-04:00) Asuncion":                                          "America/Asuncion",
 	"(UTC-04:00) Atlantic Time (Canada)":                            "America/Halifax",
 	"(UTC-04:00) Caracas":                                           "America/Caracas",
@@ -52,12 +57,16 @@ var WinIANA = map[string]string{
 	"(UTC-03:00) City of Buenos Aires":                              "America/Buenos_Aires",
 	"(UTC-03:00) Greenland":                                         "America/Godthab",
 	"(UTC-03:00) Montevideo":                                        "America/Montevideo",
+	"(UTC-03:00) Punta Arenas":                                      "America/Punta_Arenas",
 	"(UTC-03:00) Saint Pierre and Miquelon":                         "America/Miquelon",
 	"(UTC-03:00) Salvador":                                          "America/Bahia",
 	"(UTC-02:00) Co-ordinated Universal Time-02":                    "Etc/GMT+2",
+	"(UTC-02:00) Coordinated Universal Time-02":                     "Etc/GMT+2",
+	"(UTC-02:00) Mid-Atlantic - Old":                                "Etc/GMT+2",
 	"(UTC-01:00) Azores":                                            "Atlantic/Azores",
 	"(UTC-01:00) Cabo Verde Is.":                                    "Atlantic/Cape_Verde",
 	"(UTC) Co-ordinated Universal Time":                             "Etc/GMT",
+	"(UTC) Coordinated Universal Time":                              "Etc/GMT",
 	"(UTC+00:00) Casablanca":                                        "Africa/Casablanca",
 	"(UTC+00:00) Dublin, Edinburgh, Lisbon, London":                 "Europe/London",
 	"(UTC+00:00) Monrovia, Reykjavik":                               "Atlantic/Reykjavik",
@@ -77,8 +86,11 @@ var WinIANA = map[string]string{
 	"(UTC+02:00) Harare, Pretoria":                                  "Africa/Johannesburg",
 	"(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius":     "Europe/Kiev",
 	"(UTC+02:00) Istanbul":                                          "Europe/Istanbul",
+	"(UTC+03:00) Istanbul":                                          "Europe/Istanbul",
 	"(UTC+02:00) Jerusalem":                                         "Asia/Jerusalem",
 	"(UTC+02:00) Kaliningrad":                                       "Europe/Kaliningrad",
+	"(UTC+02:00) Windhoek":                                          "Africa/Windhoek",
+	"(UTC+02:00) Khartoum":                                          "Africa/Khartoum",
 	"(UTC+02:00) Tripoli":                                           "Africa/Tripoli",
 	"(UTC+03:00) Baghdad":                                           "Asia/Baghdad",
 	"(UTC+03:00) Kuwait, Riyadh":                                    "Asia/Riyadh",
@@ -90,6 +102,7 @@ var WinIANA = map[string]string{
 	"(UTC+04:00) Astrakhan, Ulyanovsk":                              "Europe/Samara",
 	"(UTC+04:00) Baku":                                              "Asia/Baku",
 	"(UTC+04:00) Izhevsk, Samara":                                   "Europe/Samara",
+	"(UTC+04:00) Saratov":                                           "Europe/Saratov",
 	"(UTC+04:00) Port Louis":                                        "Indian/Mauritius",
 	"(UTC+04:00) Tbilisi":                                           "Asia/Tbilisi",
 	"(UTC+04:00) Yerevan":                                           "Asia/Yerevan",
@@ -102,20 +115,24 @@ var WinIANA = map[string]string{
 	"(UTC+05:45) Kathmandu":                                         "Asia/Kathmandu",
 	"(UTC+06:00) Astana":                                            "Asia/Almaty",
 	"(UTC+06:00) Dhaka":                                             "Asia/Dhaka",
+	"(UTC+06:00) Omsk":                                              "Asia/Omsk",
 	"(UTC+06:00) Novosibirsk":                                       "Asia/Novosibirsk",
 	"(UTC+06:30) Yangon (Rangoon)":                                  "Asia/Rangoon",
 	"(UTC+07:00) Bangkok, Hanoi, Jakarta":                           "Asia/Bangkok",
 	"(UTC+07:00) Barnaul, Gorno-Altaysk":                            "Asia/Krasnoyarsk",
 	"(UTC+07:00) Hovd":                                              "Asia/Hovd",
 	"(UTC+07:00) Krasnoyarsk":                                       "Asia/Krasnoyarsk",
+	"(UTC+07:00) Novosibirsk":                                       "Asia/Novosibirsk",
 	"(UTC+07:00) Tomsk":                                             "Asia/Tomsk",
 	"(UTC+08:00) Beijing, Chongqing, Hong Kong SAR, Urumqi":         "Asia/Shanghai",
+	"(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi":             "Asia/Shanghai",
 	"(UTC+08:00) Irkutsk":                                           "Asia/Irkutsk",
 	"(UTC+08:00) Kuala Lumpur, Singapore":                           "Asia/Singapore",
 	"(UTC+08:00) Perth":                                             "Australia/Perth",
 	"(UTC+08:00) Taipei":                                            "Asia/Taipei",
 	"(UTC+08:00) Ulaanbaatar":                                       "Asia/Ulaanbaatar",
 	"(UTC+08:30) Pyongyang":                                         "Asia/Pyongyang",
+	"(UTC+09:00) Pyongyang":                                         "Asia/Pyongyang",
 	"(UTC+08:45) Eucla":                                             "Australia/Eucla",
 	"(UTC+09:00) Chita":                                             "Asia/Chita",
 	"(UTC+09:00) Osaka, Sapporo, Tokyo":                             "Asia/Tokyo",
@@ -138,13 +155,17 @@ var WinIANA = map[string]string{
 	"(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky":                  "Asia/Kamchatka",
 	"(UTC+12:00) Auckland, Wellington":                              "Pacific/Auckland",
 	"(UTC+12:00) Co-ordinated Universal Time+12":                    "Etc/GMT-12",
+	"(UTC+12:00) Coordinated Universal Time+12":                     "Etc/GMT-12",
+	"(UTC+12:00) Petropavlovsk-Kamchatsky - Old":                    "Etc/GMT-12",
 	"(UTC+12:00) Fiji":                                              "Pacific/Fiji",
 	"(UTC+12:45) Chatham Islands":                                   "Pacific/Chatham",
 	"(UTC+13:00) Nuku'alofa":                                        "Pacific/Tongatapu",
+	"(UTC+13:00) Co-ordinated Universal Time+13":                    "Etc/GMT-13",
+	"(UTC+13:00) Coordinated Universal Time+13":                     "Etc/GMT-13",
 	"(UTC+13:00) Samoa":                                             "Pacific/Apia",
 	"(UTC+14:00) Kiritimati Island":                                 "Pacific/Kiritimati"}
 
-// TimezonParseWindows accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
+// TimezoneParseWindows accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
 // parameter and a windows time zone (eg "(UTC+12:00) Fiji") as the timezone. It will return
 // a timezoned date, which will correctly handle daylight savings time if it's in force at the given date
 func TimezoneParseWindows(tstring string, tzone string) (time.Time, error) {
@@ -157,7 +178,7 @@ func TimezoneParseWindows(tstring string, tzone string) (time.Time, error) {
 
 }
 
-// TimezonParseIana accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
+// TimezoneParseIANA accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
 // parameter and am IANA time zone (eg  "Pacific/Fiji") as the timezone. It will return
 // a timezoned date, which will correctly handle daylight savings time if it's in force at the given date
 func TimezoneParseIANA(tstring string, tzone string) (time.Time, error) {
@@ -175,6 +196,8 @@ func TimezoneParseIANA(tstring string, tzone string) (time.Time, error) {
 	return zulutime, nil
 
 }
+
+// StripTimezoneFromDate removes the same point in time and date, but strips apart the timezone
 func StripTimezoneFromDate(indate time.Time) time.Time {
 	return time.Unix(indate.Unix(), 0)
 
