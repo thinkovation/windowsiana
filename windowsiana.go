@@ -167,7 +167,8 @@ var WinIANA = map[string]string{
 	"(UTC+13:00) Co-ordinated Universal Time+13":                    "Etc/GMT-13",
 	"(UTC+13:00) Coordinated Universal Time+13":                     "Etc/GMT-13",
 	"(UTC+13:00) Samoa":                                             "Pacific/Apia",
-	"(UTC+14:00) Kiritimati Island":                                 "Pacific/Kiritimati"}
+	"(UTC+14:00) Kiritimati Island":                                 "Pacific/Kiritimati",
+}
 
 // TimezoneParseWindows accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
 // parameter and a windows time zone (eg "(UTC+12:00) Fiji") as the timezone. It will return
@@ -179,7 +180,6 @@ func TimezoneParseWindows(tstring string, tzone string) (time.Time, error) {
 		return t, errors.New("Could not match windows timezone to IANA timezone")
 	}
 	return TimezoneParseIANA(tstring, WinIANA[tzone])
-
 }
 
 // TimezoneParseIANA accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
@@ -198,11 +198,9 @@ func TimezoneParseIANA(tstring string, tzone string) (time.Time, error) {
 	}
 	zulutime = time.Date(it.Year(), it.Month(), it.Day(), it.Hour(), it.Minute(), it.Second(), 0, loc)
 	return zulutime, nil
-
 }
 
 // StripTimezoneFromDate removes the same point in time and date, but strips apart the timezone
 func StripTimezoneFromDate(indate time.Time) time.Time {
 	return time.Unix(indate.Unix(), 0)
-
 }
