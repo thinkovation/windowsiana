@@ -73,6 +73,7 @@ var WinIANA = map[string]string{
 	"(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna":  "Europe/Berlin",
 	"(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague": "Europe/Budapest",
 	"(UTC+01:00) Brussels, Copenhagen, Madrid, Paris":               "Europe/Paris",
+	"(UTC+01:00) Casablanca":                                        "Africa/Casablanca",
 	"(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb":                  "Europe/Warsaw",
 	"(UTC+01:00) West Central Africa":                               "Africa/Lagos",
 	"(UTC+01:00) Windhoek":                                          "Africa/Windhoek",
@@ -95,6 +96,7 @@ var WinIANA = map[string]string{
 	"(UTC+03:00) Baghdad":                                           "Asia/Baghdad",
 	"(UTC+03:00) Kuwait, Riyadh":                                    "Asia/Riyadh",
 	"(UTC+03:00) Minsk":                                             "Europe/Minsk",
+	"(UTC+03:00) Moscow, St. Petersburg":                            "Europe/Moscow",
 	"(UTC+03:00) Moscow, St. Petersburg, Volgograd":                 "Europe/Moscow",
 	"(UTC+03:00) Nairobi":                                           "Africa/Nairobi",
 	"(UTC+03:30) Tehran":                                            "Asia/Tehran",
@@ -102,14 +104,16 @@ var WinIANA = map[string]string{
 	"(UTC+04:00) Astrakhan, Ulyanovsk":                              "Europe/Samara",
 	"(UTC+04:00) Baku":                                              "Asia/Baku",
 	"(UTC+04:00) Izhevsk, Samara":                                   "Europe/Samara",
-	"(UTC+04:00) Saratov":                                           "Europe/Saratov",
 	"(UTC+04:00) Port Louis":                                        "Indian/Mauritius",
+	"(UTC+04:00) Saratov":                                           "Europe/Saratov",
 	"(UTC+04:00) Tbilisi":                                           "Asia/Tbilisi",
+	"(UTC+04:00) Volgograd":                                         "Europe/Volgograd",
 	"(UTC+04:00) Yerevan":                                           "Asia/Yerevan",
 	"(UTC+04:30) Kabul":                                             "Asia/Kabul",
 	"(UTC+05:00) Ashgabat, Tashkent":                                "Asia/Tashkent",
 	"(UTC+05:00) Ekaterinburg":                                      "Asia/Yekaterinburg",
 	"(UTC+05:00) Islamabad, Karachi":                                "Asia/Karachi",
+	"(UTC+05:00) Qyzylorda":                                         "Asia/Qyzylorda",
 	"(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi":               "Asia/Calcutta",
 	"(UTC+05:30) Sri Jayawardenepura":                               "Asia/Colombo",
 	"(UTC+05:45) Kathmandu":                                         "Asia/Kathmandu",
@@ -163,7 +167,8 @@ var WinIANA = map[string]string{
 	"(UTC+13:00) Co-ordinated Universal Time+13":                    "Etc/GMT-13",
 	"(UTC+13:00) Coordinated Universal Time+13":                     "Etc/GMT-13",
 	"(UTC+13:00) Samoa":                                             "Pacific/Apia",
-	"(UTC+14:00) Kiritimati Island":                                 "Pacific/Kiritimati"}
+	"(UTC+14:00) Kiritimati Island":                                 "Pacific/Kiritimati",
+}
 
 // TimezoneParseWindows accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
 // parameter and a windows time zone (eg "(UTC+12:00) Fiji") as the timezone. It will return
@@ -175,7 +180,6 @@ func TimezoneParseWindows(tstring string, tzone string) (time.Time, error) {
 		return t, errors.New("Could not match windows timezone to IANA timezone")
 	}
 	return TimezoneParseIANA(tstring, WinIANA[tzone])
-
 }
 
 // TimezoneParseIANA accepts a timestring in the format "2006-01-02T15:04:05" as the tstring
@@ -194,11 +198,9 @@ func TimezoneParseIANA(tstring string, tzone string) (time.Time, error) {
 	}
 	zulutime = time.Date(it.Year(), it.Month(), it.Day(), it.Hour(), it.Minute(), it.Second(), 0, loc)
 	return zulutime, nil
-
 }
 
 // StripTimezoneFromDate removes the same point in time and date, but strips apart the timezone
 func StripTimezoneFromDate(indate time.Time) time.Time {
 	return time.Unix(indate.Unix(), 0)
-
 }
