@@ -7,6 +7,7 @@ A very simple package that helps when dealing with Windows timezones and mapping
 
 I created this package to handle times that were sent back from a web service that were sent with details of the Windows timezone to which they were tied. In order to make the time usable in Go, I created this little package to allow me to convert an inbound Windows time into a propert time.
 
+
 The list is also inspired by the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview) and as of 21st of May 2019 is compatible to all [outlookUser supportedTimeZones](https://docs.microsoft.com/en-us/graph/api/outlookuser-supportedtimezones)
 
 ## Technical prerequisites to develop/build
@@ -21,3 +22,6 @@ The program is as of 07/2021 developed with Visual Studio Code and several plugi
     * [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 
 The docker container used always uses the latest version of [golang](https://golang.org/dl/).
+=======
+The list is also inspired by the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview) and as of 21st of July 2021 is compatible to all [outlookUser supportedTimeZones](https://docs.microsoft.com/en-us/graph/api/outlookuser-supportedtimezones)
+
